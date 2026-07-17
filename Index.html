@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>釜山五日 · 母女自由行</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--sand:#eef0f2;--warm-white:#f8f9fb;--ink:#2a2d35;--dust:#6b7280;--coral:#b85c6e;--sea:#5b7fa6;--gold:#8a9e7a;--moss:#7a8e7a;--cream:#d8dde6;--purple:#6b7ab5;--lp:#eef1f8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--sand);color:var(--ink);font-family:'Noto Serif TC',serif;font-weight:300;line-height:1.5;overflow-x:hidden;}
+
+/* TOP HEADER */
+.top-header{background:linear-gradient(158deg,#dde3ec 0%,#c8d0dc 38%,#b8c8d8 100%);padding:1.2rem 1.5rem 0;position:sticky;top:0;z-index:200;}
+.header-title{display:flex;align-items:baseline;gap:0.8rem;margin-bottom:0.8rem;}
+.header-zh{font-size:1.3rem;font-weight:600;letter-spacing:0.04em;}
+.header-sub{font-family:'Noto Sans TC',sans-serif;font-size:0.75rem;color:var(--dust);}
+
+/* TAB NAV TOP */
+.tab-nav{display:flex;overflow-x:auto;gap:0;scrollbar-width:none;border-bottom:none;}
+.tab-nav::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;padding:0.6rem 1rem;font-family:'Noto Sans TC',sans-serif;font-size:1.22rem;color:rgba(26,22,18,0.4);background:rgba(255,255,255,0.25);border:none;border-radius:8px 8px 0 0;cursor:pointer;transition:all 0.18s;white-space:nowrap;margin-right:2px;}
+.tab-btn.active{background:var(--sand);color:var(--ink);font-weight:500;}
+.tab-btn:hover:not(.active){background:rgba(255,255,255,0.4);color:var(--ink);}
+
+/* PAGES */
+.tab-page{display:none;max-width:720px;margin:0 auto;padding:1.2rem 1.2rem 3rem;}
+.tab-page.active{display:block;}
+
+/* INFO PAGE */
+.info-hero{padding:1rem 0 1.5rem;position:relative;overflow:hidden;}
+.info-hero::after{content:'BUSAN';position:absolute;bottom:-1rem;right:0;font-family:'DM Serif Display',serif;font-size:8rem;color:rgba(26,22,18,0.04);line-height:1;pointer-events:none;}
+.hero-en{font-family:'DM Serif Display',serif;font-style:italic;font-size:clamp(2.5rem,8vw,5rem);color:var(--sea);opacity:0.25;line-height:1;margin-bottom:-1.2rem;}
+.hero-zh{font-size:clamp(1.6rem,5vw,3rem);font-weight:600;letter-spacing:0.06em;line-height:1.1;position:relative;z-index:1;}
+.hero-pills{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.8rem;}
+.pill{background:rgba(255,255,255,0.7);border:1px solid rgba(26,22,18,0.1);border-radius:50px;padding:0.22rem 0.75rem;font-size:1.10rem;font-family:'Noto Sans TC',sans-serif;}
+
+.section-label{font-family:'Noto Sans TC',sans-serif;font-size:1.06rem;color:var(--dust);letter-spacing:0.15em;margin:1.4rem 0 0.6rem;}
+
+/* FLIGHT */
+.fl-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;}
+@media(max-width:480px){.fl-grid{grid-template-columns:1fr;}}
+.fl{border-radius:10px;padding:1rem;border-left:3px solid var(--coral);background:#2a2d35;}
+.fl.ret{border-left-color:var(--sea);}
+.fl-times{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;}
+.fl-t{font-family:'DM Serif Display',serif;font-size:2rem;color:white;line-height:1;}
+.fl-arr{color:rgba(255,255,255,0.25);font-size:1.2rem;}
+.fl-info{font-family:'Noto Sans TC',sans-serif;font-size:1rem;color:rgba(255,255,255,0.85);line-height:1.6;}
+.fl-badge{display:inline-block;font-size:0.88rem;font-family:'Noto Sans TC',sans-serif;padding:0.2rem 0.65rem;border-radius:3px;margin-top:0.3rem;}
+.fl-badge.go{background:rgba(212,96,74,0.35);color:#f4a090;}
+.fl-badge.ret-b{background:rgba(74,125,142,0.35);color:#90c4d4;}
+
+/* HOTEL */
+.hotel-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;}
+@media(max-width:480px){.hotel-grid{grid-template-columns:1fr;}}
+.hotel-card{background:white;border-radius:10px;padding:1rem;display:flex;gap:0.75rem;box-shadow:0 2px 8px rgba(26,22,18,0.06);align-items:flex-start;}
+.hc-ico{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;color:white;}
+.hc-ico.sea{background:var(--sea);}
+.hc-ico.moss{background:var(--moss);}
+.hc-name{font-weight:600;font-size:0.85rem;margin-bottom:0.1rem;}
+.hc-nights{font-family:'Noto Sans TC',sans-serif;font-size:0.90rem;color:var(--coral);font-weight:500;margin-bottom:0.12rem;}
+.hc-addr{font-family:'Noto Sans TC',sans-serif;font-size:1.06rem;color:var(--dust);line-height:1.45;}
+.hc-tags{display:flex;gap:0.25rem;flex-wrap:wrap;margin-top:0.35rem;}
+.hct{font-family:'Noto Sans TC',sans-serif;font-size:1.22rem;color:var(--dust);background:var(--sand);padding:0.12rem 0.45rem;border-radius:3px;}
+
+/* COST TABLE */
+.cost-table{width:100%;border-collapse:collapse;font-family:'Noto Sans TC',sans-serif;font-size:0.8rem;background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(26,22,18,0.05);}
+.cost-table th{background:#2a2d35;color:rgba(255,255,255,0.7);padding:0.6rem 0.8rem;text-align:left;font-weight:400;font-size:1.06rem;letter-spacing:0.08em;}
+.cost-table td{padding:0.55rem 0.8rem;border-bottom:1px solid var(--cream);color:var(--dust);}
+.cost-table tr:last-child td{border-bottom:none;font-weight:600;color:var(--ink);}
+.cost-table td:last-child{text-align:right;color:var(--ink);}
+
+/* DAY PAGES */
+.day-hd{display:flex;align-items:center;gap:0.9rem;margin-bottom:1.1rem;padding-top:0.5rem;}
+.bubble{width:46px;height:46px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;color:white;}
+.bubble .bn{font-family:'DM Serif Display',serif;font-size:1.3rem;line-height:1;}
+.bubble .bl{font-size:0.52rem;letter-spacing:0.12em;opacity:0.75;font-family:'Noto Sans TC',sans-serif;}
+.d1 .bubble,.tab-d1.active{--day-color:var(--coral);}
+.d2 .bubble,.tab-d2.active{--day-color:var(--sea);}
+.d3 .bubble,.tab-d3.active{--day-color:var(--purple);}
+.d4 .bubble,.tab-d4.active{--day-color:var(--moss);}
+.d5 .bubble,.tab-d5.active{--day-color:var(--gold);}
+.d1 .bubble{background:var(--coral);}
+.d2 .bubble{background:var(--sea);}
+.d3 .bubble{background:var(--purple);}
+.d4 .bubble{background:var(--moss);}
+.d5 .bubble{background:var(--gold);}
+.day-meta .date{font-family:'Noto Sans TC',sans-serif;font-size:0.75rem;color:var(--dust);letter-spacing:0.08em;}
+.day-meta .theme{font-weight:600;font-size:1.22rem;}
+
+/* TIMELINE */
+.tl{position:relative;}
+.tl::before{content:'';position:absolute;left:23px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--cream),transparent);}
+.ti{display:grid;grid-template-columns:46px 1fr;gap:0.55rem;margin-bottom:0.6rem;}
+.ti-dot{display:flex;align-items:flex-start;justify-content:center;padding-top:0.85rem;}
+.ti-dot::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--cream);flex-shrink:0;border:1.5px solid white;position:relative;z-index:1;}
+.ti.hi .ti-dot::after{background:var(--coral);}
+.ti.kp .ti-dot::after{background:var(--purple);}
+.tc{background:var(--warm-white);border-radius:8px;padding:0.8rem 0.95rem;}
+.tc-time{font-family:'Noto Sans TC',sans-serif;font-size:1.06rem;color:var(--dust);letter-spacing:0.06em;margin-bottom:0.2rem;}
+.tc-name{font-weight:600;font-size:1.15rem;margin-bottom:0.2rem;}
+.tc-body{font-family:'Noto Sans TC',sans-serif;font-size:1.05rem;color:var(--dust);line-height:1.5;}
+.cost{display:inline-flex;align-items:center;gap:0.3rem;margin-top:0.3rem;background:rgba(201,149,58,0.1);border-radius:4px;padding:0.18rem 0.55rem;font-family:'Noto Sans TC',sans-serif;font-size:1.10rem;color:#7a5500;}
+.tags{display:flex;gap:0.25rem;flex-wrap:wrap;margin-top:0.35rem;}
+.t{font-size:0.7rem;font-family:'Noto Sans TC',sans-serif;padding:0.1rem 0.45rem;border-radius:3px;}
+.t-f{background:#fdecd7;color:#a04a0a;}
+.t-v{background:#d7eaf4;color:#1a5a70;}
+.t-k{background:#f0eaf8;color:#5a3a7a;}
+.t-s{background:#ddf4d7;color:#1a5010;}
+.t-r{background:#f4f0d7;color:#6a5a10;}
+.t-m{background:#fff0d0;color:#8a6000;}
+
+.kcard{background:linear-gradient(135deg,#2a3245,#3a4560);border-radius:10px;padding:1rem;color:white;margin-bottom:0.6rem;position:relative;overflow:hidden;}
+.kcard::before{content:'♪';position:absolute;top:-8px;right:8px;font-size:3.5rem;opacity:0.07;}
+.kc-lbl{font-size:1.15rem;font-family:'Noto Sans TC',sans-serif;letter-spacing:0.18em;opacity:0.45;margin-bottom:0.35rem;}
+.kc-title{font-weight:600;font-size:0.9rem;margin-bottom:0.6rem;}
+.kc-shops{display:flex;flex-direction:column;gap:0.4rem;}
+.kcs{background:rgba(255,255,255,0.07);border-radius:6px;padding:0.6rem 0.8rem;display:grid;grid-template-columns:auto 1fr;gap:0.55rem;align-items:start;}
+.kcs-badge{font-size:0.90rem;font-family:'Noto Sans TC',sans-serif;background:rgba(201,149,58,0.28);color:#e8c080;padding:0.12rem 0.42rem;border-radius:3px;white-space:nowrap;margin-top:0.1rem;}
+.kcs-name{font-size:1.15rem;font-weight:500;margin-bottom:0.08rem;}
+.kcs-note{font-size:1.06rem;opacity:0.6;font-family:'Noto Sans TC',sans-serif;line-height:1.45;}
+
+.tip{background:linear-gradient(135deg,#fdecd7,#f4e8d0);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:0.8rem 0.95rem;font-family:'Noto Sans TC',sans-serif;font-size:1.15rem;color:#6a4010;line-height:1.5;margin-top:0.6rem;}
+.tip strong{font-weight:600;display:block;margin-bottom:0.12rem;color:#8a5010;}
+.warn{background:#fff8f0;border-left:3px solid var(--coral);border-radius:0 8px 8px 0;padding:0.8rem 0.95rem;font-family:'Noto Sans TC',sans-serif;font-size:1.15rem;color:#5a2010;line-height:1.5;margin-top:0.6rem;}
+
+/* KOREAN */
+.ph-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.65rem;margin-top:0.8rem;}
+@media(max-width:440px){.ph-grid{grid-template-columns:1fr;}}
+.phc{background:var(--warm-white);border-radius:8px;padding:0.85rem;}
+.ph-ko{font-size:1.3rem;color:var(--sea);font-weight:600;margin-bottom:0.15rem;}
+.ph-s{font-size:1.1rem;color:var(--coral);font-family:'Noto Sans TC',sans-serif;margin-bottom:0.2rem;font-weight:500;}
+.ph-zh{font-size:1.05rem;color:var(--ink);font-family:'Noto Sans TC',sans-serif;}
+.ph-u{font-size:0.92rem;color:var(--moss);font-family:'Noto Sans TC',sans-serif;margin-top:0.2rem;}
+
+/* PACK */
+.pack{display:grid;grid-template-columns:repeat(3,1fr);gap:0.45rem;margin-top:0.8rem;}
+@media(max-width:440px){.pack{grid-template-columns:repeat(2,1fr);}}
+.pi{background:var(--warm-white);border-radius:6px;padding:0.85rem;text-align:center;font-size:1rem;font-family:'Noto Sans TC',sans-serif;color:var(--dust);}
+.pi span{font-size:1.6rem;display:block;margin-bottom:0.25rem;}
+.pi.wide{grid-column:1/-1;text-align:left;padding:0.95rem;font-size:1rem;}
+.sec-title{font-weight:600;font-size:1rem;margin-bottom:0.2rem;}
+.sec-sub{font-family:'Noto Sans TC',sans-serif;font-size:0.8rem;color:var(--dust);}
+</style>
+</head>
+<body>
+
+<!-- STICKY TOP HEADER -->
+<div class="top-header">
+  <div class="header-title">
+    <span class="header-zh">五日慢旅</span>
+    <span class="header-sub">7/20–7/24 · 廣安里→南浦 兩段住宿</span>
+  </div>
+  <div class="tab-nav">
+    <button class="tab-btn tab-d1" onclick="switchTab('info',this)">✈️ 資訊</button>
+    <button class="tab-btn tab-d1 active" onclick="switchTab('d1',this)">Day 1</button>
+    <button class="tab-btn tab-d2" onclick="switchTab('d2',this)">Day 2</button>
+    <button class="tab-btn tab-d3" onclick="switchTab('d3',this)">Day 3</button>
+    <button class="tab-btn tab-d4" onclick="switchTab('d4',this)">Day 4</button>
+    <button class="tab-btn tab-d5" onclick="switchTab('d5',this)">Day 5</button>
+    <button class="tab-btn" onclick="switchTab('ko',this)">🇰🇷 韓語</button>
+    <button class="tab-btn" onclick="switchTab('en',this)">🗣 英語</button>
+    <button class="tab-btn" onclick="switchTab('pack',this)">🧳 行李</button>
+    <button class="tab-btn" onclick="switchTab('taxi',this)">🚕 叫車</button>
+    <button class="tab-btn" onclick="switchTab('map',this)">🗺 地圖</button>
+  </div>
+</div>
+
+<!-- ===== INFO PAGE ===== -->
+<div class="tab-page" id="page-info">
+  <div class="info-hero">
+    <div class="hero-en">Busan</div>
+    <div class="hero-zh">五日慢旅</div>
+    <div class="hero-pills">
+      <span class="pill">Anita × 小魚 · 首次韓國</span>
+      <span class="pill">廣安里 → 南浦 兩段住宿</span>
+    </div>
+  </div>
+
+  <div class="section-label">✈️ 班機</div>
+  <div class="fl-grid">
+    <div class="fl">
+      <div class="fl-times"><span class="fl-t">08:15</span><span class="fl-arr">→</span><span class="fl-t">11:30</span></div>
+      <div class="fl-info">台北 TPE → 釜山金海 PUS<br>7/20（一）· 星宇航空 <strong style="color:rgba(255,255,255,0.9)">JX900</strong><br>⚠️ 05:00 從淡水出發 · 06:15 前到機場</div>
+      <span class="fl-badge go">去程 · 訂位代號 EF3EN6</span>
+    </div>
+    <div class="fl ret">
+      <div class="fl-times"><span class="fl-t">14:55</span><span class="fl-arr">→</span><span class="fl-t">16:15</span></div>
+      <div class="fl-info">釜山金海 PUS → 台北 TPE<br>7/24（五）· 星宇航空 <strong style="color:rgba(255,255,255,0.9)">JX901</strong><br>⚠️ 11:00 前退房 · 線上報到 7/22 14:55 起開放</div>
+      <span class="fl-badge ret-b">回程</span>
+    </div>
+  </div>
+  <div style="background:rgba(255,255,255,0.88);border-radius:8px;padding:0.85rem 1rem;margin-top:0.6rem;font-family:'Noto Sans TC',sans-serif;font-size:0.96rem;color:#2a2d35;line-height:1.7;">
+    <div style="color:#2a2d35;font-weight:600;margin-bottom:0.4rem;">🎫 旅客資訊</div>
+    <div>Anita（KUO MENG CHIA）· 票號 189-2613746513</div>
+    <div>小魚（TSAI YU YEN）· 票號 189-2613746514</div>
+    <div style="margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid #d8dde6;">🧳 行李額度（每人）：個人物品 1件 + 手提 1件（合計 7kg）· 托運 1件 23kg</div>
+    <div style="margin-top:0.3rem;">✈️ 線上報到：去程 7/18 08:15 起開放，報到截止 7/20 07:15</div>
+  </div>
+
+  <div class="section-label">🏨 住宿</div>
+  <div class="hotel-grid">
+    <div class="hotel-card">
+      <div class="hc-ico sea">🌊</div>
+      <div>
+        <div class="hc-nights">Day 1–2 · 7/20–7/22 · 2晚</div>
+        <div class="hc-name">霍默斯飯店 Homers Hotel</div>
+        <div class="hc-addr">廣安里海邊路 217 · 廣安大橋正對面<br>Trip.com 訂單 1616332118308635<br>飯店確認號碼：26340825</div>
+        <div class="hc-tags"><span class="hct">Check-in 15:00</span><span class="hct">退房 11:00</span><span class="hct">🌉 海景</span></div>
+      </div>
+    </div>
+    <div class="hotel-card">
+      <div class="hc-ico moss">🏙</div>
+      <div>
+        <div class="hc-nights">Day 3–5 · 7/22–7/24 · 2晚</div>
+        <div class="hc-name">布林東方貝門 The Bayment Bling Eastern</div>
+        <div class="hc-addr">中區 중구로 5번길 14 · 南浦洞<br>BIFF廣場步行 &lt;100m · Trip.com 4.8分<br>Trip.com 訂單 1616331424870921<br>⚠️ 免費取消期限：7/17 23:59 前</div>
+        <div class="hc-tags"><span class="hct">Check-in 16:00</span><span class="hct">退房 11:00</span><span class="hct">🌊 海景</span><span class="hct">🍳 廚房</span><span class="hct">🫧 洗衣機</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">🚕 計程車費總覽</div>
+  <table class="cost-table">
+    <thead><tr><th>行程</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr><td>廣安里→尾浦（Day 2）</td><td>KRW 10,000–13,000</td></tr>
+      <tr><td>尾浦→廣安木→新世界→廣安里（Day 2）</td><td>KRW 21,000–28,000</td></tr>
+      <tr><td>廣安里→南浦換飯店（Day 3）</td><td>KRW 12,000–17,000</td></tr>
+      <tr><td>南浦→機場（Day 5）</td><td>KRW 14,000–18,000</td></tr>
+      <tr><td><strong>合計</strong></td><td><strong>KRW 60,000–78,000</strong><br><span style="font-size:1.06rem;color:var(--dust);">約 TWD 1,380–1,800</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="warn" style="margin-top:1rem;">⚠️ 布林東方貝門無實體前台，密碼自助入住。自備牙刷牙膏，有問題訊息聯絡房東。</div>
+
+  <div class="section-label">🚇 釜山地鐵路線圖</div>
+  <div style="background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(26,22,18,0.06);">
+    <img src="busan-metro.webp" alt="釜山地鐵路線圖" style="width:100%;display:block;">
+    <div style="padding:0.65rem 0.9rem;font-family:'Noto Sans TC',sans-serif;font-size:1.18rem;color:var(--dust);line-height:1.45;">
+      📍 <strong style="color:var(--ink);">1. 西面</strong>（1＋2號線交會）·
+      <strong style="color:var(--ink);">2. 南浦洞</strong>（1號線）·
+      <strong style="color:var(--ink);">3. 廣安里</strong>（水營站，2號線）·
+      <strong style="color:var(--ink);">4. 海雲台</strong>（2號線）<br>
+      圖片來源：米斯湘 missbusan.com
+    </div>
+  </div>
+</div>
+
+<!-- DAY 1 -->
+<div class="tab-page active" id="page-d1">
+  <div class="day d1">
+    <div class="day-hd">
+      <div class="bubble"><span class="bn">1</span><span class="bl">DAY</span></div>
+      <div class="day-meta">
+        <div class="date">7月20日（一）· 廣安里 Homers Hotel</div>
+        <div class="theme">抵達釜山 · 廣安里第一夜</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="ti"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">⚠️ 05:00 出發</div>
+        <div class="tc-name">🚗 淡水 → 機場（爸爸送）</div>
+        <div class="tc-body">班機 08:15，需 06:15 前到機場。前一晚把行李整理好，不要讓爸爸等太久 😊</div>
+      </div></div>
+      <div class="ti"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">08:15 起飛 · 11:30 落地</div>
+        <div class="tc-name">✈️ 金海機場入境</div>
+        <div class="tc-body">入境後：便利商店買 <strong>T-money 卡</strong>各一張儲值 ₩30,000，換 ₩200,000 現金。叫 Uber/Kakao T 直達 Homers Hotel。</div>
+        <div class="cost">🚕 KRW 23,000–30,000（約 TWD 530–690）</div>
+      </div></div>
+      <div class="ti"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">13:00 左右</div>
+        <div class="tc-name">🏨 行李寄放 · 輕裝出門</div>
+        <div class="tc-body">Check-in 15:00，先寄放行李，推開門就是廣安里海灘。</div>
+      </div></div>
+      <div class="ti hi"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">下午 · 步行即達</div>
+        <div class="tc-name">🍜 백일평냉 平壤冷麵（米其林）</div>
+        <div class="tc-body">廣安里米其林名店，成始璄必推。7月大熱天吃冷麵最對。⚠️ 13:00 左右人潮多要排隊，休息 15:30–17:30。</div>
+        <div class="tags"><span class="t t-f">🍜 冷麵</span><span class="t t-r">⭐ 米其林</span></div>
+      </div></div>
+      <div class="ti"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">下午 · 全程步行</div>
+        <div class="tc-name">🚶 廣安里海邊路慢逛</div>
+        <div class="tc-body">
+          · <strong>Working Holiday</strong>（3分）海景咖啡廳<br>
+          · <strong>ORANGEPADA</strong>（5分）紀念品＋明信片郵筒<br>
+          · <strong>panier</strong>（4分）質感選物，12:00開<br>
+          · <strong>Millac the Market</strong>（10分）複合廣場，傍晚最美<br>
+          · <strong>民樂水邊公園</strong>（18分）免費，坐著看廣安大橋
+        </div>
+        <div class="tags"><span class="t t-r">☕ 咖啡</span><span class="t t-s">🛍 小店</span><span class="t t-s">📸 拍貼</span></div>
+      </div></div>
+      <div class="ti"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">15:00</div>
+        <div class="tc-name">🏨 Check-in Homers Hotel</div>
+        <div class="tc-body">放行李、洗澡，推開窗就是廣安大橋。</div>
+      </div></div>
+      <div class="ti hi"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">18:30–20:00</div>
+        <div class="tc-name">🍗 돌닭 광안점 石板辣炒雞</div>
+        <div class="tc-body">步行 5 分鐘。燒熱石板上桌，甜辣可選辣度，剩醬汁加飯炒是隱藏吃法。⚠️ CATCHTABLE app 可遠端候位。</div>
+        <div class="tags"><span class="t t-f">🍗 石板雞</span><span class="t t-f">🌶 辣度可選</span></div>
+      </div></div>
+      <div class="ti"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">餐後</div>
+        <div class="tc-name">🌉 廣安大橋夜景</div>
+        <div class="tc-body">便利商店買飲料，坐海邊吹風看燈光秀——就在飯店門口。</div>
+        <div class="tags"><span class="t t-v">✨ 廣安大橋</span><span class="t t-r">🌙 輕鬆</span></div>
+      </div></div>
+    </div>
+    <div class="tip"><strong>💡 今天重點</strong>落地後整個下午廣安里隨意逛，沿海邊路往東走，走累就坐下來，不用趕任何地方。</div>
+    <div class="warn">⚠️ 早班機 08:15，前一晚要整理好行李，05:00 出門不能賴床。</div>
+  </div>
+</div>
+
+<!-- DAY 2 -->
+<div class="tab-page" id="page-d2">
+  <div class="day d2">
+    <div class="day-hd">
+      <div class="bubble"><span class="bn">2</span><span class="bl">DAY</span></div>
+      <div class="day-meta">
+        <div class="date">7月21日（二）· 廣安里 Homers Hotel</div>
+        <div class="theme">膠囊列車 · 廣安木烤肉 · Spa Land</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="ti"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">早上</div>
+        <div class="tc-name">☕ All Sunday Bagel</div>
+        <div class="tc-body">飯店步行 3 分，8 點開門。Q 彈貝果外帶坐海邊吃。</div>
+        <div class="tags"><span class="t t-f">🥯 排隊貝果</span></div>
+      </div></div>
+      <div class="ti"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">13:00–15:30</div>
+        <div class="tc-name">😌 回飯店休息</div>
+        <div class="tc-body">7月下午最熱，吹冷氣補充體力，傍晚還有膠囊列車。</div>
+      </div></div>
+      <div class="ti hi"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">17:00 出發</div>
+        <div class="tc-name">🚕 廣安里 → 尾浦站</div>
+        <div class="tc-body">暑假旺季排隊人多，17:20 到站。目的地：<strong>해운대 블루라인파크 미포역</strong></div>
+        <div class="cost">🚕 KRW 10,000–13,000</div>
+      </div></div>
+      <div class="ti hi"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">⚠️ 18:00 報到</div>
+        <div class="tc-name">🚡 膠囊列車（尾浦→青沙浦）</div>
+        <div class="tc-body">二樓刷 QR Code，超 30 分鐘不退款。靠海外側視野無遮蔽，30 分鐘車程。18:30 到青沙浦，日落約 19:35 等夕陽。</div>
+        <div class="cost">🚡 2人 KRW 50,000</div>
+        <div class="tags"><span class="t t-v">🎡 膠囊列車</span><span class="t t-v">🌅 夕陽</span></div>
+      </div></div>
+      <div class="ti"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">19:00</div>
+        <div class="tc-name">🚂 海岸列車回尾浦</div>
+        <div class="tc-body">現場換票，有冷氣全座位面海，約 10–15 分鐘。</div>
+        <div class="tags"><span class="t t-v">🌊 海景列車</span></div>
+      </div></div>
+      <div class="ti hi"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">19:20 · 計程車約 10 分</div>
+        <div class="tc-name">🥩 광안목 廣安木 乾式熟成烤肉</div>
+        <div class="tc-body">海雲台구남로，乾式熟成豬五花，桌邊代烤。平日 16:30 開門，最後點餐 22:30。</div>
+        <div class="cost">🚕 尾浦→廣安木：KRW 5,000–7,000</div>
+        <div class="tags"><span class="t t-f">🥩 乾式熟成</span><span class="t t-f">🔥 代烤</span></div>
+      </div></div>
+      <div class="ti hi"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">21:15 · 計程車約 10 分</div>
+        <div class="tc-name">🏬 新世界百貨 → Spa Land</div>
+        <div class="tc-body">先辦 3F 外國人會員卡（95折），再去 1F Spa Land（Dior 和 Prada 中間）。⚠️ <strong>週一公休</strong>（7/21 週二✓）最晚 22:00 入場，23:00 關門。</div>
+        <div class="cost">🚕 廣安木→新世界：KRW 6,000–8,000 · ♨️ 約 KRW 20,000</div>
+        <div class="tags"><span class="t t-r">♨️ 溫泉</span><span class="t t-r">😌 放鬆</span></div>
+      </div></div>
+      <div class="ti"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">23:00</div>
+        <div class="tc-name">🚕 回 Homers Hotel</div>
+        <div class="cost">🚕 新世界→廣安里：KRW 10,000–13,000</div>
+      </div></div>
+    </div>
+    <div class="tip"><strong>💡 今天唯一要卡緊的</strong>17:00 出發，17:20 到尾浦排隊，18:00 膠囊列車報到。</div>
+    <div class="warn">⚠️ 膠囊列車憑證：開 KKday App 出示 QR Code，<strong>不能截圖</strong>。訂單 26KK288410445。</div>
+  </div>
+</div>
+
+<!-- DAY 3 -->
+<div class="tab-page" id="page-d3">
+  <div class="day d3">
+    <div class="day-hd">
+      <div class="bubble"><span class="bn">3</span><span class="bl">DAY</span></div>
+      <div class="day-meta">
+        <div class="date">7月22日（三）· 換飯店：廣安里 → 南浦</div>
+        <div class="theme">換飯店 · 西面追星 · 地鐵回南浦</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="ti"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">早上</div>
+        <div class="tc-name">☕ 廣安里最後早餐</div>
+        <div class="tc-body">最後一個廣安里早晨，找間咖啡廳看最後一眼廣安大橋。</div>
+      </div></div>
+      <div class="ti hi"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">⚠️ 11:00 前退房</div>
+        <div class="tc-name">🧳 換飯店 → 布林東方貝門（南浦）</div>
+        <div class="tc-body">叫 Uber 帶行李直達南浦飯店。Check-in 16:00，先寄放行李，搭地鐵去西面追星。</div>
+        <div class="cost">🚕 廣安里→南浦：KRW 18,000–24,000（約 TWD 415–555）</div>
+      </div></div>
+      <div class="ti"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">地鐵 · 約 15 分</div>
+        <div class="tc-name">🚇 南浦站 → 西面站</div>
+        <div class="tc-body">1號線直達，不用換車。到西面先吃午餐再追星。</div>
+        <div class="cost">🚇 2人共約 KRW 2,800</div>
+      </div></div>
+      <div class="ti hi"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">午餐 · 西面步行即達</div>
+        <div class="tc-name">🍜 안목돼지국밥 安木豬肉湯飯</div>
+        <div class="tc-body">西面在地老字號，湯頭濃郁，份量實在。</div>
+        <div class="tags"><span class="t t-f">🥣 老字號</span></div>
+      </div></div>
+      <div class="ti kp"><div class="ti-dot"></div><div class="tc" style="background:var(--lp);">
+        <div class="tc-time">下午 · 西面站步行可達</div>
+        <div class="tc-name" style="color:var(--purple);">🎵 교보문고 教保文庫（HOTTRACKS 專櫃）</div>
+        <div class="tc-body">買新專輯首選，一整面牆最新 K-POP 發行，官方應援手燈也有。<strong>可在現場直接辦退稅</strong>，不用另外跑退稅窗口。</div>
+        <div class="tags"><span class="t t-k">💜 TXT</span><span class="t t-k">🔦 手燈</span><span class="t t-s">💰 現場退稅</span></div>
+      </div></div>
+      <div class="ti kp"><div class="ti-dot"></div><div class="tc" style="background:var(--lp);">
+        <div class="tc-time">下午 · 西面地下街</div>
+        <div class="tc-name" style="color:var(--purple);">🎵 POWER STATION</div>
+        <div class="tc-body">釜山老字號唱片專賣店。剛發行新版可能有<strong>店鋪預購特典卡</strong>，值得問一下。Weverse Albums 版也容易找到。</div>
+        <div class="tags"><span class="t t-k">💜 特典卡</span><span class="t t-k">📀 Weverse</span></div>
+      </div></div>
+      <div class="ti kp"><div class="ti-dot"></div><div class="tc" style="background:var(--lp);">
+        <div class="tc-time">順路 · 田浦洞（西面旁）</div>
+        <div class="tc-name" style="color:var(--purple);">🎵 SD Media（挖寶必去）</div>
+        <div class="tc-body">沿田浦咖啡街散步過來。大量<strong>絕版、舊版</strong> TXT 專輯與早期周邊，補齊收藏的 MOA 不能錯過。</div>
+        <div class="tags"><span class="t t-k">💜 絕版</span><span class="t t-k">🕰 舊版</span><span class="t t-r">☕ 田浦咖啡街</span></div>
+      </div></div>
+      <div class="ti kp"><div class="ti-dot"></div><div class="tc" style="background:var(--lp);">
+        <div class="tc-time">下午 · 西面</div>
+        <div class="tc-name" style="color:var(--purple);">🎵 일상의틈 by U+</div>
+        <div class="tc-body">不定期限定品，出發前查 IG 確認是否有活動。</div>
+        <div class="tags"><span class="t t-k">💜 限定品</span></div>
+      </div></div>
+      <div class="ti"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">傍晚 · 西面吃完再回</div>
+        <div class="tc-name">🍽 西面晚餐</div>
+        <div class="tc-body">西面商圈隨便走都有選擇，吃完搭地鐵回南浦，不用空腹回飯店。</div>
+        <div class="tags"><span class="t t-f">🍽 晚餐</span></div>
+      </div></div>
+      <div class="ti"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">晚間 · 地鐵約 15 分</div>
+        <div class="tc-name">🚇 西面 → 南浦 · 布林東方貝門 Check-in</div>
+        <div class="tc-body">1號線直達回南浦，辦理入住，衣服丟進洗衣機。</div>
+      </div></div>
+    </div>
+    <div class="tip"><strong>💡 今天節奏</strong>退房→南浦放行李→地鐵去西面追星→西面晚餐→地鐵回南浦 Check-in。行李不用拖著跑，動線清楚。</div>
+  </div>
+</div>
+
+<!-- DAY 4 -->
+<div class="tab-page" id="page-d4">
+  <div class="day d4">
+    <div class="day-hd">
+      <div class="bubble"><span class="bn">4</span><span class="bl">DAY</span></div>
+      <div class="day-meta">
+        <div class="date">7月23日（四）· 南浦 布林東方貝門</div>
+        <div class="theme">甘川洞 · 南浦洞追星夜</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="ti"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">睡到自然醒</div>
+        <div class="tc-name">☕ 早午餐</div>
+        <div class="tc-body">廚房解決早餐，或南浦洞附近咖啡廳，悠閒吃完下午再出發。</div>
+      </div></div>
+      <div class="ti hi"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">下午出發</div>
+        <div class="tc-name">🎨 甘川洞文化村</div>
+        <div class="tc-body">彩色小屋山城，蓋章闖關、拍壁畫、鑽小巷。⚠️ <strong>一定要搭公車上山</strong>，7月夏天爬坡又熱又累。店家多至 18:00，14:00 前到最剛好。<br><br>
+        🚇 <strong>交通方式：</strong><br>
+        南浦站（1號線）→ 土城站（토성역）<strong>一站約 3 分鐘</strong>！比從西面出發還近<br>
+        土城站 <strong>6號出口</strong> → 走 3 分鐘到「<strong>부산대학병원</strong>」站牌<br>
+        搭 <strong>서구2번 或 61번</strong> 公車 → 甘川洞文化村入口（감정초등학교）下車，約 10 分鐘<br>
+        ⚠️ 暑假旺季公車很擠，早點到站牌排隊<br><br>
+        🔙 <strong>下山回南浦洞：</strong><br>
+        在「감정초등학교」站牌搭同班公車下山 → 到札嘎其站（자갈치역）下車<br>
+        → 轉地鐵 1號線一站 → 南浦站（남포역）到達</div>
+        <div class="cost">🚇+🚌 2人共約 KRW 4,000</div>
+        <div class="tags"><span class="t t-v">🏘 彩色村</span><span class="t t-v">📸 拍照</span></div>
+      </div></div>
+      <div class="ti kp"><div class="ti-dot"></div><div class="tc" style="background:var(--lp);">
+        <div class="tc-time">傍晚 / 晚間</div>
+        <div class="tc-name" style="color:var(--purple);">🎵 南浦洞追星</div>
+        <div class="tc-body">甘川洞下山→地鐵→南浦/扎嘎其站，約 25–35 分鐘。</div>
+        <div class="cost">🚌+🚇 2人共約 KRW 4,000</div>
+      </div></div>
+    </div>
+    <div class="kcard">
+      <div class="kc-lbl">南浦洞 K-POP 採購</div>
+      <div class="kc-title">🎵 BIFF 廣場周邊三間店</div>
+      <div class="kc-shops">
+        <div class="kcs"><div class="kcs-badge">首選</div><div><div class="kcs-name">KPOP FRIENDS 南浦店</div><div class="kcs-note">
+          整面牆<strong style="color:#e8c080;">單售小卡區</strong>，依成員分類（秀彬・然竣・杋圭・太顯・休寧凱），省去盲抽麻煩，稀有卡依市場價波動。<br>
+          現場也有官方＋非官方周邊，有機會挖到 <strong style="color:#e8c080;">PPULBATU 玩偶</strong>衣服、吊飾、氣氛燈等。
+        </div></div></div>
+        <div class="kcs"><div class="kcs-badge">老字號</div><div><div class="kcs-name">I LOVE MUSIC</div><div class="kcs-note">扎嘎其站 7號出口 · 專輯官方品</div></div></div>
+        <div class="kcs"><div class="kcs-badge">補貨</div><div><div class="kcs-name">ALL THAT K</div><div class="kcs-note">南浦洞 · 種類豐富可補漏</div></div></div>
+      </div>
+    </div>
+    <div class="tl" style="margin-top:0.6rem;">
+      <div class="ti hi"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">夜晚 · 晚餐參考</div>
+        <div class="tc-name">🍖 미친막창 본점（瘋腸本店）烤豬腸</div>
+        <div class="tc-body">南浦洞광복로16-2，BIFF廣場步行約 3 分鐘。整條街只有這家生意最旺，豬腸＋肥腸半半套餐最推薦，附特製醬汁超搭。<strong>免費附拉麵和剉冰</strong>！<br>
+        ⚠️ 每天 16:00 開門，營業到凌晨 2:00，排隊是常態。</div>
+        <div class="tags"><span class="t t-f">🍖 烤豬腸</span><span class="t t-f">🍜 免費拉麵</span><span class="t t-f">🍧 免費剉冰</span></div>
+      </div></div>
+      <div class="ti hi"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">夜晚</div>
+        <div class="tc-name">🥞 BIFF 廣場 · 호떡 黑糖餅</div>
+        <div class="tc-body">要排隊但值得，廣場很熱鬧，吃完盡興再回飯店。</div>
+        <div class="tags"><span class="t t-f">🥞 黑糖餅</span></div>
+      </div></div>
+      <div class="ti"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">回飯店後</div>
+        <div class="tc-name">🧳 整理行李</div>
+        <div class="tc-body">明天 <strong>11:00 前退房</strong>，今晚要打包。行李全免費，清點戰利品。</div>
+      </div></div>
+    </div>
+    <div class="tip"><strong>💡 今天節奏</strong>從飯店走路出去就是 BIFF 廣場。早上輕鬆出發→甘川洞→下山回南浦追星→烤豬腸→黑糖餅，整天不用跨區。</div>
+  </div>
+</div>
+
+<!-- DAY 5 -->
+<div class="tab-page" id="page-d5">
+  <div class="day d5">
+    <div class="day-hd">
+      <div class="bubble"><span class="bn">5</span><span class="bl">DAY</span></div>
+      <div class="day-meta">
+        <div class="date">7月24日（五）· 退房回台灣</div>
+        <div class="theme">西面最後採買 · 準時上飛機</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="ti kp"><div class="ti-dot"></div><div class="tc" style="background:var(--lp);">
+        <div class="tc-time">早晨</div>
+        <div class="tc-name" style="color:var(--purple);">🎵 일상의틈 by U+（最後補漏）</div>
+        <div class="tc-body">出發前查 IG 確認是否有限定品活動。</div>
+        <div class="tags"><span class="t t-k">💜 TXT</span></div>
+      </div></div>
+      <div class="ti hi"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">早上</div>
+        <div class="tc-name">🛍 西面最後掃貨</div>
+        <div class="tc-body"><strong>Olive Young</strong> 最後一輪，便利商店買蝦餅、紫菜、泡麵。<strong>T-money 餘額在便利商店刷掉</strong>，帶回台灣沒法用。</div>
+        <div class="tags"><span class="t t-s">🎁 伴手禮</span><span class="t t-s">🧴 Olive Young</span></div>
+      </div></div>
+      <div class="ti"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">⚠️ 11:00 前</div>
+        <div class="tc-name">🏨 布林東方貝門退房</div>
+        <div class="tc-body">比一般飯店早一小時，確認沒有遺漏。</div>
+      </div></div>
+      <div class="ti hi"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">11:00 出發</div>
+        <div class="tc-name">🚕 布林東方貝門 → 金海機場</div>
+        <div class="tc-body">班機 14:55，計程車直達最保險。約 30–35 分鐘，12:30 前到機場很充裕。</div>
+        <div class="cost">🚕 KRW 17,000–20,000（約 TWD 390–460）</div>
+      </div></div>
+      <div class="ti"><div class="ti-dot"></div><div class="tc">
+        <div class="tc-time">14:55 起飛 → 16:15 落地</div>
+        <div class="tc-name">✈️ 回台灣</div>
+        <div class="tc-body">帶著一行李箱戰利品、TXT 周邊，和第一次韓國的記憶，回家。</div>
+        <div class="cost">🚕 機場→淡水：約 TWD 1,100–1,300</div>
+      </div></div>
+    </div>
+    <div class="tip"><strong>💡 今天最重要</strong>11:00 退房是底線，班機 14:55 時間很寬裕，不要為了最後一件周邊趕不上飛機。</div>
+  </div>
+</div>
+
+<!-- 韓語速查 -->
+<div class="tab-page" id="page-ko">
+  <div style="padding-top:0.5rem;">
+    <div class="sec-title">母女生存用語</div>
+    <div class="sec-sub">不用講很好，敢開口就夠了</div>
+    <div class="ph-grid">
+      <div class="phc"><div class="ph-ko">저기요</div><div class="ph-s">糗ㄎㄧ優</div><div class="ph-zh">不好意思／欸～</div><div class="ph-u">✓ 叫店員、問路</div></div>
+      <div class="phc"><div class="ph-ko">이거 주세요</div><div class="ph-s">一狗 啾誰優</div><div class="ph-zh">這個請給我</div><div class="ph-u">✓ 手指菜單就能點餐</div></div>
+      <div class="phc"><div class="ph-ko">얼마예요?</div><div class="ph-s">歐罵耶優？</div><div class="ph-zh">多少錢？</div><div class="ph-u">✓ 市場採購好用</div></div>
+      <div class="phc"><div class="ph-ko">화장실 어디예요?</div><div class="ph-s">花將洗 歐滴耶優</div><div class="ph-zh">廁所在哪裡？</div><div class="ph-u">✓ 這句一定要背</div></div>
+      <div class="phc"><div class="ph-ko">이모님 여기요</div><div class="ph-s">姨某膩 悠ㄍㄧ唷</div><div class="ph-zh">阿姨～這邊！</div><div class="ph-u">✓ 叫大媽店員</div></div>
+      <div class="phc"><div class="ph-ko">괜찮아요</div><div class="ph-s">肯燦那優</div><div class="ph-zh">沒關係／不用了</div><div class="ph-u">✓ 拒絕推銷萬用</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 英語會話 -->
+<div class="tab-page" id="page-en">
+  <div style="padding-top:0.5rem;">
+    <div class="sec-title">🗣 旅行英語會話</div>
+    <div class="sec-sub">依行程整理 · 觀光區講英語都通</div>
+
+    <div style="display:flex;flex-direction:column;gap:1rem;margin-top:1rem;font-family:'Noto Sans TC',sans-serif;">
+
+      <div style="background:var(--warm-white);border-radius:10px;padding:1rem 1.1rem;">
+        <div style="font-weight:600;font-size:1.15rem;color:var(--ink);margin-bottom:0.6rem;">✈️ 機場・報到</div>
+        <div style="font-size:1.1rem;color:var(--ink);line-height:2;">
+          <strong>Two carry-on bags and one checked bag, please.</strong><br><span style="color:var(--dust);font-size:0.98rem;">兩件手提、一件托運</span><br>
+          <strong>Can we sit together?</strong><br><span style="color:var(--dust);font-size:0.98rem;">我們可以坐一起嗎</span><br>
+          <strong>Where is the currency exchange?</strong><br><span style="color:var(--dust);font-size:0.98rem;">換錢的地方在哪</span>
+        </div>
+      </div>
+
+      <div style="background:var(--warm-white);border-radius:10px;padding:1rem 1.1rem;">
+        <div style="font-weight:600;font-size:1.15rem;color:var(--ink);margin-bottom:0.6rem;">🏨 飯店</div>
+        <div style="font-size:1.1rem;color:var(--ink);line-height:2;">
+          <strong>Can we leave our luggage here before check-in?</strong><br><span style="color:var(--dust);font-size:0.98rem;">入住前可以寄放行李嗎（Day 1 必用）</span><br>
+          <strong>We have a reservation under KUO.</strong><br><span style="color:var(--dust);font-size:0.98rem;">訂位名字是 KUO</span><br>
+          <strong>What time is check-out?</strong><br><span style="color:var(--dust);font-size:0.98rem;">幾點退房</span><br>
+          <strong>Could you call a taxi for us?</strong><br><span style="color:var(--dust);font-size:0.98rem;">可以幫我們叫計程車嗎</span><br>
+          <strong>The Wi-Fi password, please?</strong><br><span style="color:var(--dust);font-size:0.98rem;">Wi-Fi 密碼是什麼</span>
+        </div>
+      </div>
+
+      <div style="background:var(--warm-white);border-radius:10px;padding:1rem 1.1rem;">
+        <div style="font-weight:600;font-size:1.15rem;color:var(--ink);margin-bottom:0.6rem;">🚕 計程車</div>
+        <div style="font-size:1.1rem;color:var(--ink);line-height:2;">
+          <strong>To this address, please.</strong><br><span style="color:var(--dust);font-size:0.98rem;">去這個地址（配合叫車卡片）</span><br>
+          <strong>How long will it take?</strong><br><span style="color:var(--dust);font-size:0.98rem;">大概多久</span><br>
+          <strong>Can I pay by card?</strong><br><span style="color:var(--dust);font-size:0.98rem;">可以刷卡嗎</span><br>
+          <strong>Please stop here.</strong><br><span style="color:var(--dust);font-size:0.98rem;">請停這裡</span>
+        </div>
+      </div>
+
+      <div style="background:var(--warm-white);border-radius:10px;padding:1rem 1.1rem;">
+        <div style="font-weight:600;font-size:1.15rem;color:var(--ink);margin-bottom:0.6rem;">🍽 餐廳（排隊名店必用）</div>
+        <div style="font-size:1.1rem;color:var(--ink);line-height:2;">
+          <strong>Table for two, please.</strong><br><span style="color:var(--dust);font-size:0.98rem;">兩位</span><br>
+          <strong>How long is the wait?</strong><br><span style="color:var(--dust);font-size:0.98rem;">要等多久</span><br>
+          <strong>Do you have an English menu?</strong><br><span style="color:var(--dust);font-size:0.98rem;">有英文菜單嗎</span><br>
+          <strong>Not too spicy, please.</strong><br><span style="color:var(--dust);font-size:0.98rem;">請不要太辣</span><br>
+          <strong>This one, please.</strong><br><span style="color:var(--dust);font-size:0.98rem;">點這個（指菜單最萬用）</span><br>
+          <strong>Check, please.</strong><br><span style="color:var(--dust);font-size:0.98rem;">買單</span>
+        </div>
+      </div>
+
+      <div style="background:var(--lp);border-radius:10px;padding:1rem 1.1rem;">
+        <div style="font-weight:600;font-size:1.15rem;color:var(--purple);margin-bottom:0.6rem;">🛍 購物・追星</div>
+        <div style="font-size:1.1rem;color:var(--ink);line-height:2;">
+          <strong>Tax refund, please.</strong><br><span style="color:var(--dust);font-size:0.98rem;">我要退稅（教保文庫用）</span><br>
+          <strong>Do you have TXT albums / photocards?</strong><br><span style="color:var(--dust);font-size:0.98rem;">有 TXT 專輯／小卡嗎</span><br>
+          <strong>How much is this?</strong><br><span style="color:var(--dust);font-size:0.98rem;">這多少錢</span><br>
+          <strong>Do you have a bigger / smaller one?</strong><br><span style="color:var(--dust);font-size:0.98rem;">有大一點／小一點的嗎</span>
+        </div>
+      </div>
+
+      <div style="background:var(--warm-white);border-radius:10px;padding:1rem 1.1rem;">
+        <div style="font-weight:600;font-size:1.15rem;color:var(--ink);margin-bottom:0.6rem;">♨️ Spa Land</div>
+        <div style="font-size:1.1rem;color:var(--ink);line-height:2;">
+          <strong>Two adults, please.</strong><br><span style="color:var(--dust);font-size:0.98rem;">兩位成人</span><br>
+          <strong>Where do I get the uniform?</strong><br><span style="color:var(--dust);font-size:0.98rem;">桑拿服在哪裡領</span><br>
+          <strong>Where are the lockers?</strong><br><span style="color:var(--dust);font-size:0.98rem;">置物櫃在哪</span>
+        </div>
+      </div>
+
+      <div style="background:var(--warm-white);border-radius:10px;padding:1rem 1.1rem;">
+        <div style="font-weight:600;font-size:1.15rem;color:var(--ink);margin-bottom:0.6rem;">🚡 膠囊列車</div>
+        <div style="font-size:1.1rem;color:var(--ink);line-height:2;">
+          <strong>We have a reservation at 6 PM.</strong><br><span style="color:var(--dust);font-size:0.98rem;">我們訂了六點的</span><br>
+          <strong>Here's our QR code.</strong><br><span style="color:var(--dust);font-size:0.98rem;">這是我們的 QR Code</span>
+        </div>
+      </div>
+
+      <div style="background:#fdf0ee;border-radius:10px;padding:1rem 1.1rem;">
+        <div style="font-weight:600;font-size:1.15rem;color:#a04040;margin-bottom:0.6rem;">🆘 緊急備用</div>
+        <div style="font-size:1.1rem;color:var(--ink);line-height:2;">
+          <strong>Could you help me?</strong><br><span style="color:var(--dust);font-size:0.98rem;">可以幫我嗎</span><br>
+          <strong>I lost my phone / wallet.</strong><br><span style="color:var(--dust);font-size:0.98rem;">我手機／錢包不見了</span><br>
+          <strong>Where is the nearest pharmacy?</strong><br><span style="color:var(--dust);font-size:0.98rem;">最近的藥局在哪</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- 行李清單 -->
+<div class="tab-page" id="page-pack">
+  <div style="padding-top:0.5rem;">
+    <div class="sec-title">行李確認</div>
+    <div class="sec-sub">回家才發現沒帶的那種</div>
+    <div class="pack">
+      <div class="pi"><span>🔌</span>韓規轉接頭</div>
+      <div class="pi"><span>🔋</span>行動電源</div>
+      <div class="pi"><span>🪥</span>牙刷牙膏</div>
+      <div class="pi"><span>🧴</span>防曬乳</div>
+      <div class="pi"><span>🧊</span>薄外套（地鐵冷）</div>
+      <div class="pi"><span>👟</span>舒服走路鞋</div>
+      <div class="pi"><span>📱</span>Naver Map 下載</div>
+      <div class="pi"><span>💊</span>常備藥</div>
+      <div class="pi"><span>💳</span>信用卡備用</div>
+      <div class="pi"><span>🎡</span>膠囊列車已預約</div>
+      <div class="pi"><span>📋</span>TXT 採購清單</div>
+      <div class="pi"><span>🧳</span>大行李箱</div>
+      <div class="pi"><span>🛡</span>辦理旅平險</div>
+      <div class="pi wide"><span style="display:inline;font-size:1rem;">📲</span> <strong>電子入境卡 e-Arrival Card</strong>——出發前 72 小時內填寫，14 歲以下由家長代填</div>
+    </div>
+  </div>
+</div>
+
+<!-- 叫車卡片 -->
+<div class="tab-page" id="page-taxi">
+  <div style="padding-top:0.5rem;">
+    <div class="sec-title">🚕 計程車目的地卡片</div>
+    <div class="sec-sub">給司機看韓文大字，拼音是給你學唸的參考</div>
+    <div style="display:flex;flex-direction:column;gap:1rem;margin-top:1rem;">
+
+      <div style="background:var(--warm-white);border-radius:12px;overflow:hidden;">
+        <div style="background:#dde8f5;padding:0.5rem 1rem;display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:0.82rem;color:#2a4a7a;font-weight:500;">Day 1 · 廣安里飯店</span>
+        </div>
+        <div style="padding:1rem 1.1rem;">
+          <p style="font-size:1.8rem;font-weight:600;color:var(--ink);margin:0 0 0.3rem;line-height:1.3;font-family:'Noto Sans TC',sans-serif;">호머스 호텔</p>
+          <p style="font-size:0.9rem;color:var(--dust);margin:0 0 0.7rem;font-family:'Noto Sans TC',sans-serif;">광안해변로 217, 수영구</p>
+          <div style="border-top:1px solid var(--cream);padding-top:0.7rem;display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+            <div><p style="font-size:0.72rem;color:var(--dust);margin:0 0 0.2rem;">中文</p><p style="font-size:0.9rem;color:var(--ink);margin:0;font-family:'Noto Sans TC',sans-serif;">廣安里海邊路217號</p></div>
+            <div><p style="font-size:0.72rem;color:var(--dust);margin:0 0 0.2rem;">讀音</p><p style="font-size:0.82rem;color:var(--ink);margin:0;font-family:'Noto Sans TC',sans-serif;">ho-meo-seu ho-tel</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--warm-white);border-radius:12px;overflow:hidden;">
+        <div style="background:#d5ede3;padding:0.5rem 1rem;display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:0.82rem;color:#1a5a38;font-weight:500;">Day 2 · 膠囊列車出發站</span>
+        </div>
+        <div style="padding:1rem 1.1rem;">
+          <p style="font-size:1.5rem;font-weight:600;color:var(--ink);margin:0 0 0.3rem;line-height:1.4;font-family:'Noto Sans TC',sans-serif;">해운대 블루라인파크 미포역</p>
+          <p style="font-size:0.9rem;color:var(--dust);margin:0 0 0.7rem;font-family:'Noto Sans TC',sans-serif;">해운대구 달맞이길 62번길 11</p>
+          <div style="border-top:1px solid var(--cream);padding-top:0.7rem;display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+            <div><p style="font-size:0.72rem;color:var(--dust);margin:0 0 0.2rem;">中文</p><p style="font-size:0.9rem;color:var(--ink);margin:0;font-family:'Noto Sans TC',sans-serif;">海雲台藍線公園尾浦站</p></div>
+            <div><p style="font-size:0.72rem;color:var(--dust);margin:0 0 0.2rem;">讀音</p><p style="font-size:0.82rem;color:var(--ink);margin:0;font-family:'Noto Sans TC',sans-serif;">mi-po-yeok</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--warm-white);border-radius:12px;overflow:hidden;">
+        <div style="background:#f5e8d0;padding:0.5rem 1rem;">
+          <span style="font-size:0.82rem;color:#7a4a10;font-weight:500;">Day 2 · 乾式熟成烤肉</span>
+        </div>
+        <div style="padding:1rem 1.1rem;">
+          <p style="font-size:1.8rem;font-weight:600;color:var(--ink);margin:0 0 0.3rem;line-height:1.3;font-family:'Noto Sans TC',sans-serif;">광안목 해운대점</p>
+          <p style="font-size:0.9rem;color:var(--dust);margin:0 0 0.7rem;font-family:'Noto Sans TC',sans-serif;">해운대구 구남로</p>
+          <div style="border-top:1px solid var(--cream);padding-top:0.7rem;display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+            <div><p style="font-size:0.72rem;color:var(--dust);margin:0 0 0.2rem;">中文</p><p style="font-size:0.9rem;color:var(--ink);margin:0;font-family:'Noto Sans TC',sans-serif;">廣安木 海雲台店</p></div>
+            <div><p style="font-size:0.72rem;color:var(--dust);margin:0 0 0.2rem;">讀音</p><p style="font-size:0.82rem;color:var(--ink);margin:0;font-family:'Noto Sans TC',sans-serif;">gwang-an-mok hae-un-dae-jeom</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--warm-white);border-radius:12px;overflow:hidden;">
+        <div style="background:#e8e0f0;padding:0.5rem 1rem;">
+          <span style="font-size:0.82rem;color:#4a2a7a;font-weight:500;">Day 2 · 新世界百貨 Spa Land</span>
+        </div>
+        <div style="padding:1rem 1.1rem;">
+          <p style="font-size:1.6rem;font-weight:600;color:var(--ink);margin:0 0 0.3rem;line-height:1.3;font-family:'Noto Sans TC',sans-serif;">신세계백화점 센텀시티점</p>
+          <p style="font-size:0.9rem;color:var(--dust);margin:0 0 0.7rem;font-family:'Noto Sans TC',sans-serif;">해운대구 센텀남대로 59</p>
+          <div style="border-top:1px solid var(--cream);padding-top:0.7rem;display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+            <div><p style="font-size:0.72rem;color:var(--dust);margin:0 0 0.2rem;">中文</p><p style="font-size:0.9rem;color:var(--ink);margin:0;font-family:'Noto Sans TC',sans-serif;">新世界百貨 Centum City</p></div>
+            <div><p style="font-size:0.72rem;color:var(--dust);margin:0 0 0.2rem;">讀音</p><p style="font-size:0.82rem;color:var(--ink);margin:0;font-family:'Noto Sans TC',sans-serif;">shin-se-gye sen-teom-shi-ti</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--warm-white);border-radius:12px;overflow:hidden;">
+        <div style="background:#dde8f5;padding:0.5rem 1rem;">
+          <span style="font-size:0.82rem;color:#2a4a7a;font-weight:500;">Day 3–5 · 南浦飯店</span>
+        </div>
+        <div style="padding:1rem 1.1rem;">
+          <p style="font-size:1.6rem;font-weight:600;color:var(--ink);margin:0 0 0.3rem;line-height:1.4;font-family:'Noto Sans TC',sans-serif;">더 베이먼트 블링 이스턴</p>
+          <p style="font-size:0.9rem;color:var(--dust);margin:0 0 0.7rem;font-family:'Noto Sans TC',sans-serif;">중구 중구로5번길 14</p>
+          <div style="border-top:1px solid var(--cream);padding-top:0.7rem;display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+            <div><p style="font-size:0.72rem;color:var(--dust);margin:0 0 0.2rem;">中文</p><p style="font-size:0.9rem;color:var(--ink);margin:0;font-family:'Noto Sans TC',sans-serif;">布林東方貝門 南浦</p></div>
+            <div><p style="font-size:0.72rem;color:var(--dust);margin:0 0 0.2rem;">讀音</p><p style="font-size:0.82rem;color:var(--ink);margin:0;font-family:'Noto Sans TC',sans-serif;">beu-ring i-seu-teon jung-gu</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--warm-white);border-radius:12px;overflow:hidden;">
+        <div style="background:#f5d8d5;padding:0.5rem 1rem;">
+          <span style="font-size:0.82rem;color:#7a2a2a;font-weight:500;">Day 5 · 回機場（國際線航廈）</span>
+        </div>
+        <div style="padding:1rem 1.1rem;">
+          <p style="font-size:1.8rem;font-weight:600;color:var(--ink);margin:0 0 0.3rem;line-height:1.3;font-family:'Noto Sans TC',sans-serif;">김해국제공항 국제선 터미널</p>
+          <p style="font-size:0.9rem;color:var(--dust);margin:0 0 0.7rem;font-family:'Noto Sans TC',sans-serif;">강서구 공항진입로 108 · 체크인 카운터 2층</p>
+          <div style="border-top:1px solid var(--cream);padding-top:0.7rem;display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+            <div><p style="font-size:0.72rem;color:var(--dust);margin:0 0 0.2rem;">中文</p><p style="font-size:0.9rem;color:var(--ink);margin:0;font-family:'Noto Sans TC',sans-serif;">金海國際機場 國際線航廈</p></div>
+            <div><p style="font-size:0.72rem;color:var(--dust);margin:0 0 0.2rem;">讀音</p><p style="font-size:0.82rem;color:var(--ink);margin:0;font-family:'Noto Sans TC',sans-serif;">gim-hae-guk-je-gong-hang guk-je-seon teo-mi-neol</p></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- 地圖 -->
+<div class="tab-page" id="page-map">
+  <div style="padding-top:0.5rem;">
+    <div class="sec-title">🗺 行程地圖</div>
+    <div class="sec-sub">所有景點、餐廳、飯店一覽</div>
+
+    <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.5rem;font-family:'Noto Sans TC',sans-serif;font-size:0.82rem;">
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+        <span style="background:#d4604a;color:white;padding:0.2rem 0.6rem;border-radius:20px;">🏨 住宿</span>
+        <span style="background:#4a7d8e;color:white;padding:0.2rem 0.6rem;border-radius:20px;">🎡 景點</span>
+        <span style="background:#c9953a;color:white;padding:0.2rem 0.6rem;border-radius:20px;">🍽 餐廳</span>
+        <span style="background:#6b7c5a;color:white;padding:0.2rem 0.6rem;border-radius:20px;">🎵 追星</span>
+        <span style="background:#5a3a7a;color:white;padding:0.2rem 0.6rem;border-radius:20px;">✈️ 機場</span>
+      </div>
+    </div>
+
+    <div style="margin-top:0.8rem;border-radius:12px;overflow:hidden;border:1px solid var(--cream);">
+      <iframe
+        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY&q=Busan+South+Korea&center=35.12,129.07&zoom=12"
+        width="100%"
+        height="420"
+        style="border:0;display:block;"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+
+    <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.5rem;font-family:'Noto Sans TC',sans-serif;">
+
+      <div style="font-size:0.82rem;color:var(--dust);font-weight:500;margin-top:0.3rem;">🏨 住宿</div>
+      <a href="https://maps.google.com/?q=Homers+Hotel+Busan" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>霍默斯飯店 Homers Hotel</span><span style="font-size:0.75rem;color:var(--sea);">Day 1–2 · 廣安里 →</span>
+      </a>
+      <a href="https://maps.google.com/?q=더베이먼트+남포+부산" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>布林東方貝門 The Bayment</span><span style="font-size:0.75rem;color:var(--sea);">Day 3–5 · 南浦 →</span>
+      </a>
+
+      <div style="font-size:0.82rem;color:var(--dust);font-weight:500;margin-top:0.5rem;">🎡 景點</div>
+      <a href="https://maps.google.com/?q=Haeundae+Blueline+Park+Mipo+Station" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>膠囊列車 尾浦站</span><span style="font-size:0.75rem;color:var(--sea);">Day 2 →</span>
+      </a>
+      <a href="https://maps.google.com/?q=Shinsegae+Centum+City+Busan" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>新世界百貨 Centum City · Spa Land</span><span style="font-size:0.75rem;color:var(--sea);">Day 2 →</span>
+      </a>
+      <a href="https://maps.google.com/?q=Gamcheon+Culture+Village" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>甘川洞文化村</span><span style="font-size:0.75rem;color:var(--sea);">Day 4 →</span>
+      </a>
+
+      <div style="font-size:0.82rem;color:var(--dust);font-weight:500;margin-top:0.5rem;">🍽 餐廳</div>
+      <a href="https://maps.google.com/?q=광안목+해운대점" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>廣安木 乾式熟成烤肉</span><span style="font-size:0.75rem;color:var(--sea);">Day 2 →</span>
+      </a>
+      <a href="https://maps.google.com/?q=미친막창+부산본점2호점" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>미친막창 瘋腸本店 烤豬腸</span><span style="font-size:0.75rem;color:var(--sea);">Day 4 →</span>
+      </a>
+
+      <div style="font-size:0.82rem;color:var(--dust);font-weight:500;margin-top:0.5rem;">🎵 追星</div>
+      <a href="https://maps.google.com/?q=교보문고+부산+서면" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>教保文庫 HOTTRACKS · POWER STATION</span><span style="font-size:0.75rem;color:var(--sea);">Day 3 →</span>
+      </a>
+      <a href="https://maps.google.com/?q=KPOP+FRIENDS+케이팝프렌즈+남포점" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>KPOP FRIENDS 南浦店</span><span style="font-size:0.75rem;color:var(--sea);">Day 4 →</span>
+      </a>
+
+      <div style="font-size:0.82rem;color:var(--dust);font-weight:500;margin-top:0.5rem;">✈️ 機場</div>
+      <a href="https://maps.google.com/?q=김해국제공항+국제선" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>金海國際機場 國際線航廈</span><span style="font-size:0.75rem;color:var(--sea);">Day 5 →</span>
+      </a>
+
+    </div>
+    <div style="font-size:0.75rem;color:var(--dust);font-family:'Noto Sans TC',sans-serif;margin-top:1rem;text-align:center;">點各連結直接在 Google Maps 開啟導航</div>
+  </div>
+</div>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top: document.querySelector('.top-header').offsetHeight, behavior: 'smooth'});
+}
+</script>
+</body>
+</html>
