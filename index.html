@@ -159,8 +159,10 @@ body{background:var(--sand);color:var(--ink);font-family:'Noto Serif TC',serif;f
     <button class="tab-btn tab-d4" onclick="switchTab('d4',this)">Day 4</button>
     <button class="tab-btn tab-d5" onclick="switchTab('d5',this)">Day 5</button>
     <button class="tab-btn" onclick="switchTab('ko',this)">🇰🇷 韓語</button>
+    <button class="tab-btn" onclick="switchTab('en',this)">🗣 英語</button>
     <button class="tab-btn" onclick="switchTab('pack',this)">🧳 行李</button>
     <button class="tab-btn" onclick="switchTab('taxi',this)">🚕 叫車</button>
+    <button class="tab-btn" onclick="switchTab('map',this)">🗺 地圖</button>
   </div>
 </div>
 
@@ -588,6 +590,96 @@ body{background:var(--sand);color:var(--ink);font-family:'Noto Serif TC',serif;f
   </div>
 </div>
 
+<!-- 英語會話 -->
+<div class="tab-page" id="page-en">
+  <div style="padding-top:0.5rem;">
+    <div class="sec-title">🗣 旅行英語會話</div>
+    <div class="sec-sub">依行程整理 · 觀光區講英語都通</div>
+
+    <div style="display:flex;flex-direction:column;gap:1rem;margin-top:1rem;font-family:'Noto Sans TC',sans-serif;">
+
+      <div style="background:var(--warm-white);border-radius:10px;padding:1rem 1.1rem;">
+        <div style="font-weight:600;font-size:1.15rem;color:var(--ink);margin-bottom:0.6rem;">✈️ 機場・報到</div>
+        <div style="font-size:1.1rem;color:var(--ink);line-height:2;">
+          <strong>Two carry-on bags and one checked bag, please.</strong><br><span style="color:var(--dust);font-size:0.98rem;">兩件手提、一件托運</span><br>
+          <strong>Can we sit together?</strong><br><span style="color:var(--dust);font-size:0.98rem;">我們可以坐一起嗎</span><br>
+          <strong>Where is the currency exchange?</strong><br><span style="color:var(--dust);font-size:0.98rem;">換錢的地方在哪</span>
+        </div>
+      </div>
+
+      <div style="background:var(--warm-white);border-radius:10px;padding:1rem 1.1rem;">
+        <div style="font-weight:600;font-size:1.15rem;color:var(--ink);margin-bottom:0.6rem;">🏨 飯店</div>
+        <div style="font-size:1.1rem;color:var(--ink);line-height:2;">
+          <strong>Can we leave our luggage here before check-in?</strong><br><span style="color:var(--dust);font-size:0.98rem;">入住前可以寄放行李嗎（Day 1 必用）</span><br>
+          <strong>We have a reservation under KUO.</strong><br><span style="color:var(--dust);font-size:0.98rem;">訂位名字是 KUO</span><br>
+          <strong>What time is check-out?</strong><br><span style="color:var(--dust);font-size:0.98rem;">幾點退房</span><br>
+          <strong>Could you call a taxi for us?</strong><br><span style="color:var(--dust);font-size:0.98rem;">可以幫我們叫計程車嗎</span><br>
+          <strong>The Wi-Fi password, please?</strong><br><span style="color:var(--dust);font-size:0.98rem;">Wi-Fi 密碼是什麼</span>
+        </div>
+      </div>
+
+      <div style="background:var(--warm-white);border-radius:10px;padding:1rem 1.1rem;">
+        <div style="font-weight:600;font-size:1.15rem;color:var(--ink);margin-bottom:0.6rem;">🚕 計程車</div>
+        <div style="font-size:1.1rem;color:var(--ink);line-height:2;">
+          <strong>To this address, please.</strong><br><span style="color:var(--dust);font-size:0.98rem;">去這個地址（配合叫車卡片）</span><br>
+          <strong>How long will it take?</strong><br><span style="color:var(--dust);font-size:0.98rem;">大概多久</span><br>
+          <strong>Can I pay by card?</strong><br><span style="color:var(--dust);font-size:0.98rem;">可以刷卡嗎</span><br>
+          <strong>Please stop here.</strong><br><span style="color:var(--dust);font-size:0.98rem;">請停這裡</span>
+        </div>
+      </div>
+
+      <div style="background:var(--warm-white);border-radius:10px;padding:1rem 1.1rem;">
+        <div style="font-weight:600;font-size:1.15rem;color:var(--ink);margin-bottom:0.6rem;">🍽 餐廳（排隊名店必用）</div>
+        <div style="font-size:1.1rem;color:var(--ink);line-height:2;">
+          <strong>Table for two, please.</strong><br><span style="color:var(--dust);font-size:0.98rem;">兩位</span><br>
+          <strong>How long is the wait?</strong><br><span style="color:var(--dust);font-size:0.98rem;">要等多久</span><br>
+          <strong>Do you have an English menu?</strong><br><span style="color:var(--dust);font-size:0.98rem;">有英文菜單嗎</span><br>
+          <strong>Not too spicy, please.</strong><br><span style="color:var(--dust);font-size:0.98rem;">請不要太辣</span><br>
+          <strong>This one, please.</strong><br><span style="color:var(--dust);font-size:0.98rem;">點這個（指菜單最萬用）</span><br>
+          <strong>Check, please.</strong><br><span style="color:var(--dust);font-size:0.98rem;">買單</span>
+        </div>
+      </div>
+
+      <div style="background:var(--lp);border-radius:10px;padding:1rem 1.1rem;">
+        <div style="font-weight:600;font-size:1.15rem;color:var(--purple);margin-bottom:0.6rem;">🛍 購物・追星</div>
+        <div style="font-size:1.1rem;color:var(--ink);line-height:2;">
+          <strong>Tax refund, please.</strong><br><span style="color:var(--dust);font-size:0.98rem;">我要退稅（教保文庫用）</span><br>
+          <strong>Do you have TXT albums / photocards?</strong><br><span style="color:var(--dust);font-size:0.98rem;">有 TXT 專輯／小卡嗎</span><br>
+          <strong>How much is this?</strong><br><span style="color:var(--dust);font-size:0.98rem;">這多少錢</span><br>
+          <strong>Do you have a bigger / smaller one?</strong><br><span style="color:var(--dust);font-size:0.98rem;">有大一點／小一點的嗎</span>
+        </div>
+      </div>
+
+      <div style="background:var(--warm-white);border-radius:10px;padding:1rem 1.1rem;">
+        <div style="font-weight:600;font-size:1.15rem;color:var(--ink);margin-bottom:0.6rem;">♨️ Spa Land</div>
+        <div style="font-size:1.1rem;color:var(--ink);line-height:2;">
+          <strong>Two adults, please.</strong><br><span style="color:var(--dust);font-size:0.98rem;">兩位成人</span><br>
+          <strong>Where do I get the uniform?</strong><br><span style="color:var(--dust);font-size:0.98rem;">桑拿服在哪裡領</span><br>
+          <strong>Where are the lockers?</strong><br><span style="color:var(--dust);font-size:0.98rem;">置物櫃在哪</span>
+        </div>
+      </div>
+
+      <div style="background:var(--warm-white);border-radius:10px;padding:1rem 1.1rem;">
+        <div style="font-weight:600;font-size:1.15rem;color:var(--ink);margin-bottom:0.6rem;">🚡 膠囊列車</div>
+        <div style="font-size:1.1rem;color:var(--ink);line-height:2;">
+          <strong>We have a reservation at 6 PM.</strong><br><span style="color:var(--dust);font-size:0.98rem;">我們訂了六點的</span><br>
+          <strong>Here's our QR code.</strong><br><span style="color:var(--dust);font-size:0.98rem;">這是我們的 QR Code</span>
+        </div>
+      </div>
+
+      <div style="background:#fdf0ee;border-radius:10px;padding:1rem 1.1rem;">
+        <div style="font-weight:600;font-size:1.15rem;color:#a04040;margin-bottom:0.6rem;">🆘 緊急備用</div>
+        <div style="font-size:1.1rem;color:var(--ink);line-height:2;">
+          <strong>Could you help me?</strong><br><span style="color:var(--dust);font-size:0.98rem;">可以幫我嗎</span><br>
+          <strong>I lost my phone / wallet.</strong><br><span style="color:var(--dust);font-size:0.98rem;">我手機／錢包不見了</span><br>
+          <strong>Where is the nearest pharmacy?</strong><br><span style="color:var(--dust);font-size:0.98rem;">最近的藥局在哪</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!-- 行李清單 -->
 <div class="tab-page" id="page-pack">
   <div style="padding-top:0.5rem;">
@@ -704,6 +796,80 @@ body{background:var(--sand);color:var(--ink);font-family:'Noto Serif TC',serif;f
       </div>
 
     </div>
+  </div>
+</div>
+
+<!-- 地圖 -->
+<div class="tab-page" id="page-map">
+  <div style="padding-top:0.5rem;">
+    <div class="sec-title">🗺 行程地圖</div>
+    <div class="sec-sub">所有景點、餐廳、飯店一覽</div>
+
+    <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.5rem;font-family:'Noto Sans TC',sans-serif;font-size:0.82rem;">
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+        <span style="background:#d4604a;color:white;padding:0.2rem 0.6rem;border-radius:20px;">🏨 住宿</span>
+        <span style="background:#4a7d8e;color:white;padding:0.2rem 0.6rem;border-radius:20px;">🎡 景點</span>
+        <span style="background:#c9953a;color:white;padding:0.2rem 0.6rem;border-radius:20px;">🍽 餐廳</span>
+        <span style="background:#6b7c5a;color:white;padding:0.2rem 0.6rem;border-radius:20px;">🎵 追星</span>
+        <span style="background:#5a3a7a;color:white;padding:0.2rem 0.6rem;border-radius:20px;">✈️ 機場</span>
+      </div>
+    </div>
+
+    <div style="margin-top:0.8rem;border-radius:12px;overflow:hidden;border:1px solid var(--cream);">
+      <iframe
+        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY&q=Busan+South+Korea&center=35.12,129.07&zoom=12"
+        width="100%"
+        height="420"
+        style="border:0;display:block;"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+
+    <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.5rem;font-family:'Noto Sans TC',sans-serif;">
+
+      <div style="font-size:0.82rem;color:var(--dust);font-weight:500;margin-top:0.3rem;">🏨 住宿</div>
+      <a href="https://maps.google.com/?q=Homers+Hotel+Busan" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>霍默斯飯店 Homers Hotel</span><span style="font-size:0.75rem;color:var(--sea);">Day 1–2 · 廣安里 →</span>
+      </a>
+      <a href="https://maps.google.com/?q=더베이먼트+남포+부산" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>布林東方貝門 The Bayment</span><span style="font-size:0.75rem;color:var(--sea);">Day 3–5 · 南浦 →</span>
+      </a>
+
+      <div style="font-size:0.82rem;color:var(--dust);font-weight:500;margin-top:0.5rem;">🎡 景點</div>
+      <a href="https://maps.google.com/?q=Haeundae+Blueline+Park+Mipo+Station" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>膠囊列車 尾浦站</span><span style="font-size:0.75rem;color:var(--sea);">Day 2 →</span>
+      </a>
+      <a href="https://maps.google.com/?q=Shinsegae+Centum+City+Busan" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>新世界百貨 Centum City · Spa Land</span><span style="font-size:0.75rem;color:var(--sea);">Day 2 →</span>
+      </a>
+      <a href="https://maps.google.com/?q=Gamcheon+Culture+Village" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>甘川洞文化村</span><span style="font-size:0.75rem;color:var(--sea);">Day 4 →</span>
+      </a>
+
+      <div style="font-size:0.82rem;color:var(--dust);font-weight:500;margin-top:0.5rem;">🍽 餐廳</div>
+      <a href="https://maps.google.com/?q=광안목+해운대점" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>廣安木 乾式熟成烤肉</span><span style="font-size:0.75rem;color:var(--sea);">Day 2 →</span>
+      </a>
+      <a href="https://maps.google.com/?q=미친막창+부산본점2호점" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>미친막창 瘋腸本店 烤豬腸</span><span style="font-size:0.75rem;color:var(--sea);">Day 4 →</span>
+      </a>
+
+      <div style="font-size:0.82rem;color:var(--dust);font-weight:500;margin-top:0.5rem;">🎵 追星</div>
+      <a href="https://maps.google.com/?q=교보문고+부산+서면" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>教保文庫 HOTTRACKS · POWER STATION</span><span style="font-size:0.75rem;color:var(--sea);">Day 3 →</span>
+      </a>
+      <a href="https://maps.google.com/?q=KPOP+FRIENDS+케이팝프렌즈+남포점" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>KPOP FRIENDS 南浦店</span><span style="font-size:0.75rem;color:var(--sea);">Day 4 →</span>
+      </a>
+
+      <div style="font-size:0.82rem;color:var(--dust);font-weight:500;margin-top:0.5rem;">✈️ 機場</div>
+      <a href="https://maps.google.com/?q=김해국제공항+국제선" target="_blank" style="background:var(--warm-white);border-radius:8px;padding:0.7rem 0.9rem;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;">
+        <span>金海國際機場 國際線航廈</span><span style="font-size:0.75rem;color:var(--sea);">Day 5 →</span>
+      </a>
+
+    </div>
+    <div style="font-size:0.75rem;color:var(--dust);font-family:'Noto Sans TC',sans-serif;margin-top:1rem;text-align:center;">點各連結直接在 Google Maps 開啟導航</div>
   </div>
 </div>
 
